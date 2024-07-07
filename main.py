@@ -124,7 +124,7 @@ def process_text_message(message, language, llm_model):
             response = get_cohere_response(message, llm_model)
         
         return response
-    else:
+    # else:
         # translated_message = translator_indic.translate_to_english(message, "tel_Telu")
         
 
