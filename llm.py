@@ -9,18 +9,13 @@ import sys
 # Set up logging configuration
 logging.basicConfig(filename='qa_bot.log', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
 
-# Set Cohere API key
-os.environ["COHERE_API_KEY"] = "sY2tBN5oyCGiiy9Q615GekbiCGxTLChtydbXtHn3"  # Replace with your actual Cohere API key
 # Initialize GROQ client with API key
 groq_client = Groq(api_key=os.environ.get("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"))
 
-# Initialize ConversationBufferMemory
-memory = ConversationBufferMemory(memory_key="history", input_key="question")
 
 # # Function to run the QA
 def run_qa(message, llm_model):
 
-    history = memory.load_memory_variables({}).get('history', '')
 
     # Define the custom prompt
     custom_prompt = """
