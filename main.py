@@ -1,9 +1,5 @@
 import streamlit as st
-# from utils.asr import Transcription, transcribe_audio_incredibly_fast_whisper, transcribe_audio_whisper_diarization
-# from utils.translation import TranslationIndic
-# from utils.llm import get_groq_response, get_cohere_response, get_anthropic_response, get_replicate_response
-# from utils.tts import synthesize_speech
-from translation import TranslationIndic
+# from translation import TranslationIndic
 from llm import run_qa
 import os
 import numpy as np
@@ -11,7 +7,7 @@ from streamlit_mic_recorder import mic_recorder
 import time
 # Import SPRING_INX_Transcripts from infer.py
 # from utils.SPRING_INX_ASR.infer1 import SPRING_INX_Transcripts
-translator_indic = TranslationIndic()
+# translator_indic = TranslationIndic()
 # Function to translate roles between llm model and Streamlit terminology
 def translate_role_for_streamlit(user_role):
     if user_role == "model":
@@ -129,28 +125,28 @@ def process_text_message(message, language, llm_model):
         
         return response
     else:
-        translated_message = translator_indic.translate_to_english(message, "tel_Telu")
+        # translated_message = translator_indic.translate_to_english(message, "tel_Telu")
         
 
-        if llm_model in ["llama3-70b-8192", "llama3-8b-8192"]:
-            response = run_qa(translated_message, llm_model)
-        elif llm_model in ["claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"]:
-            response = get_anthropic_response(translated_transcript, llm_model)
-        elif llm_model.startswith("llama-2"):
-            response = get_replicate_response(translated_transcript, llm_model)
-        else:
-            response = get_cohere_response(translated_transcript, llm_model)
+        # if llm_model in ["llama3-70b-8192", "llama3-8b-8192"]:
+        #     response = run_qa(translated_message, llm_model)
+        # elif llm_model in ["claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"]:
+        #     response = get_anthropic_response(translated_transcript, llm_model)
+        # elif llm_model.startswith("llama-2"):
+        #     response = get_replicate_response(translated_transcript, llm_model)
+        # else:
+        #     response = get_cohere_response(translated_transcript, llm_model)
         
-        translated_response = translator_indic.translate_to_indic(response, language)
-        print(f"{llm_model} response in Indic: {translated_response}")
+        # translated_response = translator_indic.translate_to_indic(response, language)
+        # print(f"{llm_model} response in Indic: {translated_response}")
 
-        # Add assistant's response to chat history
-        chat_history.append({"role": "assistant", "content": translated_response})
+        # # Add assistant's response to chat history
+        # chat_history.append({"role": "assistant", "content": translated_response})
         
-        # Save updated chat history to session state
-        st.session_state.chat_session["history"] = chat_history
+        # # Save updated chat history to session state
+        # st.session_state.chat_session["history"] = chat_history
         
-        return translated_response
+        # return translated_response
 
 if __name__ == "__main__":
     # transcriber_indic = TranscriptionIndic()
