@@ -1,6 +1,5 @@
 import os
 import numpy as np
-from pymongo import MongoClient
 from langchain.prompts import PromptTemplate
 from langchain_cohere import CohereEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
