@@ -1,13 +1,9 @@
 import os
 import numpy as np
-from langchain.prompts import PromptTemplate
-from langchain_cohere import CohereEmbeddings
-from langchain_huggingface import HuggingFaceEmbeddings
 from urllib.parse import quote_plus
 from groq import Groq
 import datetime
 import pytz,json,re,logging
-from langchain.memory import ConversationBufferMemory
 import sys
 
 # Set up logging configuration
